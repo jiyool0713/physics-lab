@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>피직스랩</title>
+    <!-- Google Fonts에서 Nanum Pen Script 글꼴을 불러오는 링크 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+    <style>
+        /* 전체 페이지에 Nanum Pen Script 글꼴 적용 */
+        body {
+            font-family: 'Nanum Pen Script', sans-serif;
+            text-align: center;
+            padding: 20px;
+            background-color: bisque;
+        }
+
+        /* 제목 스타일, 글씨 크기 크게 조정 */
+        h1 {
+            font-size:80px;
+            margin-bottom: 20px;
+        }
+
+        /* 단락 스타일, 글씨 크기 크게 조정 */
+        p {
+            font-size: 50px;
+            line-height: 1.6;
+        }
+
+        /* 사진 기본 스타일 - 불투명도, 그림자, 둥근 모서리 추가 */
+        .styled-image {
+            width: 300px;
+            height: auto;
+            margin-top: 20px;
+            opacity: 0.9;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease-in-out;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        /* 클릭 시 빛나는 효과 및 확대와 흔들림 애니메이션 추가 */
+        .styled-image.clicked {
+            box-shadow: 0 0 15px 10px rgba(235, 22, 22, 0.6), 0 0 25px 15px rgba(240, 103, 103, 0.5);
+            transform: scale(1) rotate(0deg); /* 사진 확대 및 약간 회전 */
+            animation: shake 0.3s ease-in-out 2; /* 흔들리는 애니메이션 */
+            opacity: 1;
+        }
+
+        /* 흔들림 효과 애니메이션 */
+        @keyframes shake {
+            0% { transform: translate(0px, 0px) rotate(5deg); }
+            25% { transform: translate(-5px, 5px) rotate(-5deg); }
+            50% { transform: translate(5px, -5px) rotate(5deg); }
+            75% { transform: translate(-5px, -5px) rotate(-5deg); }
+            100% { transform: translate(0px, 0px) rotate(0deg); }
+        }
+        .styled-image:hover {
+            transform: scale(1.05); /* 사진을 1.05배 확대 */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>성욱슈타인과 함께하는 13명의 꼬마 과학자들</h1>
+        <p>한삼고 최고의 동아리 피직스랩</p>
+    </header>
+
+    <p></p>
+
+    <!-- 빛나는 효과와 흔들림 효과가 적용된 이미지 -->
+    <img src="image/KakaoTalk_20241114_145900815.jpg" 
+         alt="동아리 활동 사진" class="styled-image" onclick="applyEffect(this)">
+
+    <script>
+        // 사진을 클릭할 때 빛나는 효과, 확대, 흔들림 적용 후 1초 후에 원래 상태로 복원
+        function applyEffect(image) {
+            // 'clicked' 클래스 추가로 효과 적용
+            image.classList.add("clicked");
+            
+            // 1초 후에 원래 상태로 복원
+            setTimeout(function() {
+                image.classList.remove("clicked");
+            }, 1000); // 1000ms = 1초
+        }
+    </script>
+</body>
+</html>
